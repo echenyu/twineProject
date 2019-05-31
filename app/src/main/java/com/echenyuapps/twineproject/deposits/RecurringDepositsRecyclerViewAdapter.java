@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.echenyuapps.twineproject.R;
@@ -66,7 +65,6 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
 
   class RecurringDepositTitleViewHolder extends RecyclerView.ViewHolder {
 
-    private String mTotalDeposit;
     private TextView mRecurringDepositTitleTextView;
     private TextView mRecurringDepositTotalTextView;
 
@@ -135,10 +133,15 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
   }
 
   private String calculateSumOfDeposits() {
-    int sum = 0;
+    float sum = 0;
     for (GoalModel goalModel : mGoalModels) {
       sum = sum + goalModel.getDepositAmount();
     }
-    return String.valueOf(sum);
+
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("$");
+    stringBuilder.append(String.format("%.2f", sum));
+
+    return stringBuilder.toString();
   }
 }
