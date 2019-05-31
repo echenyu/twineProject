@@ -9,22 +9,27 @@ import static com.echenyuapps.twineproject.model.GoalModel.Status.*;
 public class GoalModelFetcher {
 
   // Todo: Convert into a ListenableFuture for asynchronous fetching
-  public static ArrayList<GoalModel> fetchGoals() {
-    ArrayList<GoalModel> goalModels = new ArrayList<>();
-    GoalModel goalModel1 = new GoalModel("Rainy Ian", PAUSED);
-    GoalModel goalModel2 = new GoalModel("Goal Name", PAUSED);
-    GoalModel goalModel3 = new GoalModel("Trip To Hawaii", PAUSED);
-    GoalModel goalModel4 = new GoalModel("Kids", PAUSED);
-    GoalModel goalModel5 = new GoalModel("Vacation", PAUSED);
-    GoalModel goalModel6 = new GoalModel("Vacation", PAUSED);
+  public static ArrayList<GoalModel> fetchGoals() throws Exception {
 
-    goalModels.add(goalModel1);
-    goalModels.add(goalModel2);
-    goalModels.add(goalModel3);
-    goalModels.add(goalModel4);
-    goalModels.add(goalModel5);
-    goalModels.add(goalModel6);
+    try {
+      ArrayList<GoalModel> goalModels = new ArrayList<>();
+      GoalModel goalModel1 = new GoalModel("Rainy Ian", PAUSED);
+      GoalModel goalModel2 = new GoalModel("Goal Name", PAUSED);
+      GoalModel goalModel3 = new GoalModel("Trip To Hawaii", PAUSED);
+      GoalModel goalModel4 = new GoalModel("Kids", PAUSED);
+      GoalModel goalModel5 = new GoalModel("Vacation", PAUSED);
+      GoalModel goalModel6 = new GoalModel("Vacation", PAUSED);
 
-    return goalModels;
+      goalModels.add(goalModel1);
+      goalModels.add(goalModel2);
+      goalModels.add(goalModel3);
+      goalModels.add(goalModel4);
+      goalModels.add(goalModel5);
+      goalModels.add(goalModel6);
+
+      return goalModels;
+    } catch (Exception e) {
+      throw e;
+    }
   }
 }
