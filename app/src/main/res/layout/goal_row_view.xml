@@ -3,7 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="16dp">
 
     <TextView
         android:id="@+id/goal_title_text_view"
@@ -17,12 +18,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="Goal Name"/>
+        android:text="Goal Name"
+        android:textSize="12sp"/>
 
     <Button
         android:id="@+id/status_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activate"/>
+        android:text="Activate" />
 
 </LinearLayout>

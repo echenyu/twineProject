@@ -34,15 +34,30 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<G
       mStatusButton = (Button) itemView.findViewById(R.id.status_button);
     }
 
+    //Todo: Figure out how we want to do the button clicks. Optimistic mutation or not?
     public void bindItems(GoalModel goalModel) {
       mGoalTitle.setText(goalModel.getTitle());
 
       if (goalModel.getStatus().equals(ACTIVATED)) {
         mGoalStatus.setText(R.string.activated_string);
         mStatusButton.setText(R.string.pause_string);
+        mStatusButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            mGoalStatus.setText(R.string.paused_string);
+            mStatusButton.setText(R.string.activate_string);
+          }
+        });
       } else {
         mGoalStatus.setText(R.string.paused_string);
         mStatusButton.setText(R.string.activate_string);
+        mStatusButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+            mGoalStatus.setText(R.string.activated_string);
+            mStatusButton.setText(R.string.pause_string);
+          }
+        });
       }
     }
   }
