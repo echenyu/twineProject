@@ -1,5 +1,6 @@
 package com.echenyuapps.twineproject.deposits;
 
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,14 +24,14 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
 
     TextView mGoalTitleTextView;
     TextView mGoalStatusTextView;
-    Button mStatusButton;
+    TextView mStatusButton;
 
     public GoalViewHolder(@NonNull View itemView) {
       super(itemView);
 
       mGoalTitleTextView = (TextView) itemView.findViewById(R.id.goal_title_text_view);
       mGoalStatusTextView = (TextView) itemView.findViewById(R.id.status_text_view);
-      mStatusButton = (Button) itemView.findViewById(R.id.status_button);
+      mStatusButton = (TextView) itemView.findViewById(R.id.status_button);
     }
 
     //Todo: Figure out how we want to do the button clicks. Optimistic mutation or not?
@@ -58,6 +59,8 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
           }
         });
       }
+
+      mStatusButton.setPaintFlags(mStatusButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
     }
   }
 

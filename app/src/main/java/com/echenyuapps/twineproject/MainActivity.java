@@ -2,6 +2,8 @@ package com.echenyuapps.twineproject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 
 import com.echenyuapps.twineproject.deposits.RecurringDepositsFragment;
 
@@ -11,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    setupToolbar();
 
     if (savedInstanceState == null) {
       RecurringDepositsFragment recurringDepositsFragment = new RecurringDepositsFragment();
@@ -21,5 +24,12 @@ public class MainActivity extends AppCompatActivity {
               .addToBackStack(null)
               .commit();
     }
+  }
+
+  private void setupToolbar() {
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    toolbar.setNavigationIcon(R.drawable.baseline_menu);
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
   }
 }
