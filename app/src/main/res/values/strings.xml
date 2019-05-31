@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TwineProject</string>
+    <string name="recurring_text">Recurring</string>
+    <string name="deposits_text">Deposits</string>
 </resources>
