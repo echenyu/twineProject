@@ -2,4 +2,8 @@
     <string name="app_name">TwineProject</string>
     <string name="recurring_text">Recurring</string>
     <string name="deposits_text">Deposits</string>
+    <string name="activated_string">ACTIVATED</string>
+    <string name="pause_string">Pause</string>
+    <string name="paused_string">PAUSED</string>
+    <string name="activate_string">Activate</string>
 </resources>

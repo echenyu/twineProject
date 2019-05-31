@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/recurringTextView"
+        android:id="@+id/recurring_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -17,10 +17,10 @@
         android:text="@string/recurring_text" />
 
     <TextView
-        android:id="@+id/depositTextView"
+        android:id="@+id/deposit_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/recurringTextView"
+        android:layout_below="@id/recurring_text_view"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
@@ -28,10 +28,10 @@
         android:text="@string/deposits_text" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/goalsRecyclerView"
+        android:id="@+id/goals_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/depositTextView"
+        android:layout_below="@id/deposit_text_view"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

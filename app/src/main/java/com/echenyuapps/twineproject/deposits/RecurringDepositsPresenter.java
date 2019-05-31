@@ -8,7 +8,7 @@ public class RecurringDepositsPresenter {
 
   public interface RecurringDepositsViewCallback {
 
-    void onFetchSucceeded();
+    void onFetchSucceeded(ArrayList<GoalModel> goalModels);
 
     void onFetchFailed();
   }
@@ -23,7 +23,7 @@ public class RecurringDepositsPresenter {
     mRecurringDepositsTask = new RecurringDepositsTask(new RecurringDepositsTask.Callback() {
       @Override
       public void onLoadSuccess(ArrayList<GoalModel> goalModels) {
-        mCallback.onFetchSucceeded();
+        mCallback.onFetchSucceeded(goalModels);
       }
 
       @Override
