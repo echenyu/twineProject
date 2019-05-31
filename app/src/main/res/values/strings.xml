@@ -6,4 +6,5 @@
     <string name="pause_string">Pause</string>
     <string name="paused_string">PAUSED</string>
     <string name="activate_string">Activate</string>
+    <string name="monthly_deposits">Monthly Deposits</string>
 </resources>

@@ -13,10 +13,12 @@ public class GoalModel {
 
   private String mTitle;
   private Status mStatus;
+  private int mDepositAmount;
 
-  public GoalModel(String title, Status status) {
+  public GoalModel(String title, Status status, int depositAmount) {
     mTitle = title;
     mStatus = status;
+    mDepositAmount = depositAmount;
   }
 
   public String getTitle() {
@@ -33,5 +35,13 @@ public class GoalModel {
 
   public void setStatus(Status status) {
     mStatus = status;
+  }
+
+  public int getDepositAmount() {
+    return mDepositAmount;
+  }
+
+  public void setDepositAmount(int depositAmount) {
+    mDepositAmount = depositAmount;
   }
 }

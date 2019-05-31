@@ -9,56 +9,74 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.echenyuapps.twineproject.R;
-import com.echenyuapps.twineproject.deposits.RecurringDepositsRecyclerViewAdapter.GoalViewHolder;
 import com.echenyuapps.twineproject.model.GoalModel;
 
 import java.util.ArrayList;
 
 import static com.echenyuapps.twineproject.model.GoalModel.Status.*;
 
-public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<GoalViewHolder> {
+public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private ArrayList<GoalModel> mGoalModels;
 
   class GoalViewHolder extends RecyclerView.ViewHolder {
 
-    TextView mGoalTitle;
-    TextView mGoalStatus;
+    TextView mGoalTitleTextView;
+    TextView mGoalStatusTextView;
     Button mStatusButton;
 
     public GoalViewHolder(@NonNull View itemView) {
       super(itemView);
 
-      mGoalTitle = (TextView) itemView.findViewById(R.id.goal_title_text_view);
-      mGoalStatus = (TextView) itemView.findViewById(R.id.status_text_view);
+      mGoalTitleTextView = (TextView) itemView.findViewById(R.id.goal_title_text_view);
+      mGoalStatusTextView = (TextView) itemView.findViewById(R.id.status_text_view);
       mStatusButton = (Button) itemView.findViewById(R.id.status_button);
     }
 
     //Todo: Figure out how we want to do the button clicks. Optimistic mutation or not?
     public void bindItems(GoalModel goalModel) {
-      mGoalTitle.setText(goalModel.getTitle());
+      mGoalTitleTextView.setText(goalModel.getTitle());
 
       if (goalModel.getStatus().equals(ACTIVATED)) {
-        mGoalStatus.setText(R.string.activated_string);
+        mGoalStatusTextView.setText(R.string.activated_string);
         mStatusButton.setText(R.string.pause_string);
         mStatusButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            mGoalStatus.setText(R.string.paused_string);
+            mGoalStatusTextView.setText(R.string.paused_string);
             mStatusButton.setText(R.string.activate_string);
           }
         });
       } else {
-        mGoalStatus.setText(R.string.paused_string);
+        mGoalStatusTextView.setText(R.string.paused_string);
         mStatusButton.setText(R.string.activate_string);
         mStatusButton.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-            mGoalStatus.setText(R.string.activated_string);
+            mGoalStatusTextView.setText(R.string.activated_string);
             mStatusButton.setText(R.string.pause_string);
           }
         });
       }
+    }
+  }
+
+  class RecurringDepositTitleViewHolder extends RecyclerView.ViewHolder {
+
+    private String mTotalDeposit;
+    private TextView mRecurringDepositTitleTextView;
+    private TextView mRecurringDepositTotalTextView;
+
+    public RecurringDepositTitleViewHolder(@NonNull View itemView) {
+      super(itemView);
+
+      mRecurringDepositTitleTextView = itemView.findViewById(R.id.recurring_deposit_title_text_view);
+      mRecurringDepositTotalTextView = itemView.findViewById(R.id.recurring_deposit_total_text_view);
+    }
+
+    public void bindItem(String totalDeposit) {
+      mRecurringDepositTitleTextView.setText(R.string.monthly_deposits);
+      mRecurringDepositTotalTextView.setText(totalDeposit);
     }
   }
 
@@ -68,19 +86,56 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<G
 
   @NonNull
   @Override
-  public GoalViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-    View goalView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.goal_row_view, viewGroup, false);
-    GoalViewHolder viewHolder = new GoalViewHolder(goalView);
-    return viewHolder;
+  public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+    switch (position) {
+      case 0:
+        View recurringDepositTitleView =
+                LayoutInflater.from(viewGroup.getContext())
+                        .inflate(
+                                R.layout.recurring_deposit_row_title_view,
+                                viewGroup,
+                                false);
+        RecurringDepositTitleViewHolder titleViewHolder = new RecurringDepositTitleViewHolder(recurringDepositTitleView);
+        return titleViewHolder;
+      default:
+        View goalView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.goal_row_view, viewGroup, false);
+        GoalViewHolder goalViewHolder = new GoalViewHolder(goalView);
+        return goalViewHolder;
+    }
   }
 
   @Override
-  public void onBindViewHolder(@NonNull GoalViewHolder goalViewHolder, int i) {
-    goalViewHolder.bindItems(mGoalModels.get(i));
+  public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+    switch(position) {
+      case 0:
+        RecurringDepositTitleViewHolder titleViewHolder = (RecurringDepositTitleViewHolder) viewHolder;
+        titleViewHolder.bindItem(calculateSumOfDeposits());
+        break;
+      default:
+        GoalViewHolder goalViewHolder = (GoalViewHolder) viewHolder;
+        goalViewHolder.bindItems(mGoalModels.get(position-1));
+        break;
+    }
   }
 
   @Override
   public int getItemCount() {
-    return mGoalModels.size();
+    return mGoalModels.size() + 1;
+  }
+
+  @Override
+  public int getItemViewType(int position) {
+    if (position == 0) {
+      return 0;
+    }
+    return 1;
+  }
+
+  private String calculateSumOfDeposits() {
+    int sum = 0;
+    for (GoalModel goalModel : mGoalModels) {
+      sum = sum + goalModel.getDepositAmount();
+    }
+    return String.valueOf(sum);
   }
 }

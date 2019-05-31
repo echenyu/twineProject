@@ -13,12 +13,12 @@ public class GoalModelFetcher {
 
     try {
       ArrayList<GoalModel> goalModels = new ArrayList<>();
-      GoalModel goalModel1 = new GoalModel("Rainy Ian", PAUSED);
-      GoalModel goalModel2 = new GoalModel("Goal Name", PAUSED);
-      GoalModel goalModel3 = new GoalModel("Trip To Hawaii", PAUSED);
-      GoalModel goalModel4 = new GoalModel("Kids", PAUSED);
-      GoalModel goalModel5 = new GoalModel("Vacation", PAUSED);
-      GoalModel goalModel6 = new GoalModel("Vacation", PAUSED);
+      GoalModel goalModel1 = new GoalModel("Rainy Ian", PAUSED, 10);
+      GoalModel goalModel2 = new GoalModel("Goal Name", PAUSED, 30);
+      GoalModel goalModel3 = new GoalModel("Trip To Hawaii", PAUSED, 70);
+      GoalModel goalModel4 = new GoalModel("Kids", PAUSED, 15);
+      GoalModel goalModel5 = new GoalModel("Vacation", PAUSED, 35);
+      GoalModel goalModel6 = new GoalModel("Vacation", PAUSED, 40);
 
       goalModels.add(goalModel1);
       goalModels.add(goalModel2);
