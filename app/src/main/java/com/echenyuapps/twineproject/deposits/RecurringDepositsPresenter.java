@@ -1,5 +1,9 @@
 package com.echenyuapps.twineproject.deposits;
 
+import com.echenyuapps.twineproject.model.GoalModel;
+
+import java.util.ArrayList;
+
 public class RecurringDepositsPresenter {
 
   public interface RecurringDepositsViewCallback {
@@ -10,11 +14,27 @@ public class RecurringDepositsPresenter {
   }
 
   private RecurringDepositsViewCallback mCallback;
+  private RecurringDepositsTask mRecurringDepositsTask;
 
-  public RecurringDepositsPresenter() {}
+  public RecurringDepositsPresenter() {
+  }
+
+  public void init() {
+    mRecurringDepositsTask = new RecurringDepositsTask(new RecurringDepositsTask.Callback() {
+      @Override
+      public void onLoadSuccess(ArrayList<GoalModel> goalModels) {
+        mCallback.onFetchSucceeded();
+      }
+
+      @Override
+      public void onLoadFailed() {
+        mCallback.onFetchFailed();
+      }
+    });
+  }
 
   public void onStart() {
-    //Todo: Fetch the data and use callback based on result
+    mRecurringDepositsTask.execute();
   }
 
   public void setCallback(RecurringDepositsViewCallback callback) {

@@ -1,13 +1,16 @@
 package com.echenyuapps.twineproject.deposits;
 
-import androidx.fragment.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 
 public class RecurringDepositsFragment extends Fragment {
 
   RecurringDepositsPresenter mPresenter;
 
   @Override
-  public void onCreate() {
+  public void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
     mPresenter = new RecurringDepositsPresenter();
     mPresenter.setCallback(new RecurringDepositsPresenter.RecurringDepositsViewCallback() {
       @Override
@@ -20,6 +23,13 @@ public class RecurringDepositsFragment extends Fragment {
         showErrorDialog(); 
       }
     });
+    mPresenter.init();
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    mPresenter.onStart();
   }
 
   private void showListOfGoals() {
@@ -28,10 +38,5 @@ public class RecurringDepositsFragment extends Fragment {
 
   private void showErrorDialog() {
     //Todo: add in error dialog
-  }
-
-  @Override
-  public void onStart() {
-    mPresenter.onStart();
   }
 }
