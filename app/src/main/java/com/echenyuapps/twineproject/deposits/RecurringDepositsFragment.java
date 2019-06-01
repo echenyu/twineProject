@@ -20,7 +20,7 @@ public class RecurringDepositsFragment extends Fragment {
     View view = inflater.inflate(R.layout.recurring_deposits_fragment, container, false);
 
     ViewPager viewPager = view.findViewById(R.id.view_pager);
-    viewPager.setAdapter(new RecurringDepositsViewPagerAdapter(getChildFragmentManager()));
+    viewPager.setAdapter(new RecurringDepositsViewPagerAdapter(getChildFragmentManager(), getContext()));
     TabLayout tabLayout = view.findViewById(R.id.sliding_tabs);
     tabLayout.setupWithViewPager(viewPager);
 

@@ -6,29 +6,28 @@ import java.util.ArrayList;
 
 public class RecurringDepositsEditPresenter {
 
-  public interface RecurringDepositsViewCallback {
+  public interface RecurringDepositsView {
 
     void onFetchSucceeded(ArrayList<GoalModel> goalModels);
 
     void onFetchFailed();
   }
 
-  private RecurringDepositsViewCallback mCallback;
+  private RecurringDepositsView mDepositsView;
   private RecurringDepositsTask mRecurringDepositsTask;
 
-  public RecurringDepositsEditPresenter() {
-  }
+  public RecurringDepositsEditPresenter() {}
 
   public void init() {
     mRecurringDepositsTask = new RecurringDepositsTask(new RecurringDepositsTask.Callback() {
       @Override
-      public void onLoadSuccess(ArrayList<GoalModel> goalModels) {
-        mCallback.onFetchSucceeded(goalModels);
+      public void onFetchSuccess(ArrayList<GoalModel> goalModels) {
+        mDepositsView.onFetchSucceeded(goalModels);
       }
 
       @Override
-      public void onLoadFailed() {
-        mCallback.onFetchFailed();
+      public void onFetchFailed() {
+        mDepositsView.onFetchFailed();
       }
     });
   }
@@ -37,7 +36,7 @@ public class RecurringDepositsEditPresenter {
     mRecurringDepositsTask.execute();
   }
 
-  public void setCallback(RecurringDepositsViewCallback callback) {
-    mCallback = callback;
+  public void setDepositsView(RecurringDepositsView depositsView) {
+    mDepositsView = depositsView;
   }
 }

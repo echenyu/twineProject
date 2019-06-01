@@ -28,9 +28,9 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
     public GoalViewHolder(@NonNull View itemView) {
       super(itemView);
 
-      mGoalTitleTextView = (TextView) itemView.findViewById(R.id.goal_title_text_view);
-      mGoalStatusTextView = (TextView) itemView.findViewById(R.id.status_text_view);
-      mStatusButton = (TextView) itemView.findViewById(R.id.status_button);
+      mGoalTitleTextView = itemView.findViewById(R.id.goal_title_text_view);
+      mGoalStatusTextView = itemView.findViewById(R.id.status_text_view);
+      mStatusButton = itemView.findViewById(R.id.status_button);
     }
 
     //Todo: Figure out how we want to do the button clicks. Optimistic mutation or not?
@@ -107,14 +107,14 @@ public class RecurringDepositsRecyclerViewAdapter extends RecyclerView.Adapter<R
 
   @Override
   public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-    switch(position) {
+    switch (position) {
       case 0:
         RecurringDepositTitleViewHolder titleViewHolder = (RecurringDepositTitleViewHolder) viewHolder;
         titleViewHolder.bindItem(calculateSumOfDeposits());
         break;
       default:
         GoalViewHolder goalViewHolder = (GoalViewHolder) viewHolder;
-        goalViewHolder.bindItems(mGoalModels.get(position-1));
+        goalViewHolder.bindItems(mGoalModels.get(position - 1));
         break;
     }
   }

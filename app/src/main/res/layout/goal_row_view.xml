@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/stevie_sans_font"
         android:textSize="18sp"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         tools:text="Rainy Ian"/>
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/stevie_sans_font"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         tools:text="Rainy Ian" />
 
 </LinearLayout>

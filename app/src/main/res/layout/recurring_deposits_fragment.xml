@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:paddingStart="24dp"
         android:textSize="40sp"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         android:fontFamily="@font/kepler_font"
         android:text="@string/recurring_text"
         android:background="#B1C1DA"/>
@@ -26,7 +26,7 @@
         android:paddingStart="24dp"
         android:paddingBottom="16dp"
         android:textSize="40sp"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         android:fontFamily="@font/kepler_font"
         android:text="@string/deposits_text"
         android:background="#B1C1DA"/>

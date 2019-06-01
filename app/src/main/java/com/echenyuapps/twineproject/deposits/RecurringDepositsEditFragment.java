@@ -26,7 +26,7 @@ public class RecurringDepositsEditFragment extends Fragment {
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mPresenter = new RecurringDepositsEditPresenter();
-    mPresenter.setCallback(new RecurringDepositsEditPresenter.RecurringDepositsViewCallback() {
+    mPresenter.setDepositsView(new RecurringDepositsEditPresenter.RecurringDepositsView() {
       @Override
       public void onFetchSucceeded(ArrayList<GoalModel> goalModels) {
         showListOfGoals(goalModels);
@@ -46,7 +46,6 @@ public class RecurringDepositsEditFragment extends Fragment {
     View view = inflater.inflate(R.layout.recurring_deposits_recycler_view, container, false);
 
     RecyclerView recurringDepositRecyclerView = view.findViewById(R.id.goals_recycler_view);
-
     mRecyclerViewAdapter = new RecurringDepositsRecyclerViewAdapter(mGoalModels);
 
     recurringDepositRecyclerView.setAdapter(mRecyclerViewAdapter);
@@ -64,7 +63,6 @@ public class RecurringDepositsEditFragment extends Fragment {
   }
 
   private void showListOfGoals(ArrayList<GoalModel> goalModels) {
-    //Todo: update the RecyclerView with the list of goals
     mGoalModels.addAll(goalModels);
     mRecyclerViewAdapter.notifyDataSetChanged();
   }

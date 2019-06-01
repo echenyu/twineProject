@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true"
         android:fontFamily="@font/stevie_sans_font"
         android:textSize="20sp"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         tools:text="Title Text"/>
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_alignParentTop="true"
         android:fontFamily="@font/stevie_sans_font"
         android:textSize="20sp"
-        android:textColor="@android:color/black"
+        android:textColor="#353535"
         tools:text="$200"/>
 
 </RelativeLayout>

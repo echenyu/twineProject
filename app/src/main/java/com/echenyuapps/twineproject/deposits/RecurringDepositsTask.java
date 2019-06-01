@@ -11,9 +11,9 @@ public class RecurringDepositsTask extends AsyncTask<Void, Void, ArrayList<GoalM
 
   public interface Callback {
 
-    void onLoadSuccess(ArrayList<GoalModel> goalModels);
+    void onFetchSuccess(ArrayList<GoalModel> goalModels);
 
-    void onLoadFailed();
+    void onFetchFailed();
   }
 
   private Callback mCallback;
@@ -34,9 +34,9 @@ public class RecurringDepositsTask extends AsyncTask<Void, Void, ArrayList<GoalM
   @Override
   protected void onPostExecute(ArrayList<GoalModel> goalModels) {
     if (goalModels != null) {
-      mCallback.onLoadSuccess(goalModels);
+      mCallback.onFetchSuccess(goalModels);
     } else {
-      mCallback.onLoadFailed();
+      mCallback.onFetchFailed();
     }
   }
 }
