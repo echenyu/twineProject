@@ -4,7 +4,7 @@ import com.echenyuapps.twineproject.model.GoalModel;
 
 import java.util.ArrayList;
 
-public class RecurringDepositsPresenter {
+public class RecurringDepositsEditPresenter {
 
   public interface RecurringDepositsViewCallback {
 
@@ -16,7 +16,7 @@ public class RecurringDepositsPresenter {
   private RecurringDepositsViewCallback mCallback;
   private RecurringDepositsTask mRecurringDepositsTask;
 
-  public RecurringDepositsPresenter() {
+  public RecurringDepositsEditPresenter() {
   }
 
   public void init() {

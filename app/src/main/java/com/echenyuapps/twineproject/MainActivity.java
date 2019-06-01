@@ -3,8 +3,8 @@ package com.echenyuapps.twineproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 
+import com.echenyuapps.twineproject.deposits.RecurringDepositsEditFragment;
 import com.echenyuapps.twineproject.deposits.RecurringDepositsFragment;
 
 public class MainActivity extends AppCompatActivity {
