@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 
-import static com.echenyuapps.twineproject.deposits.RecurringDepositsInteractor.*;
+import static com.echenyuapps.twineproject.deposits.RecurringDepositsTask.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -17,9 +17,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricTestRunner.class)
-public class RecurringDepositsInteractorTest {
+public class RecurringDepositsTaskTest {
 
-  RecurringDepositsInteractor mRecurringDepositsInteractor;
+  RecurringDepositsTask mRecurringDepositsTask;
   GoalModelFetcher mGoalModelFetcher;
   ArrayList<GoalModel> mGoalModels;
   Callback mCallback;
@@ -27,7 +27,7 @@ public class RecurringDepositsInteractorTest {
   @Before
   public void init(){
     mCallback = mock(Callback.class);
-    mRecurringDepositsInteractor = new RecurringDepositsInteractor(mCallback);
+    mRecurringDepositsTask = new RecurringDepositsTask(mCallback);
     mGoalModels = spy(ArrayList.class);
     mGoalModelFetcher = mock(GoalModelFetcher.class);
   }
@@ -40,7 +40,7 @@ public class RecurringDepositsInteractorTest {
       return;
     }
 
-    mRecurringDepositsInteractor.execute();
+    mRecurringDepositsTask.execute();
 
     verify(mCallback, times(1)).onFetchSuccess(mGoalModels);
   }

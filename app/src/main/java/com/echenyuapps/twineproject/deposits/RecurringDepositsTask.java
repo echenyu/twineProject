@@ -7,7 +7,7 @@ import com.echenyuapps.twineproject.model.GoalModel;
 
 import java.util.ArrayList;
 
-public class RecurringDepositsInteractor extends AsyncTask<Void, Void, ArrayList<GoalModel>> {
+public class RecurringDepositsTask extends AsyncTask<Void, Void, ArrayList<GoalModel>> {
 
   public interface Callback {
 
@@ -19,11 +19,9 @@ public class RecurringDepositsInteractor extends AsyncTask<Void, Void, ArrayList
   private Callback mCallback;
   private GoalModelFetcher mGoalModelFetcher = new GoalModelFetcher();
 
-  public RecurringDepositsInteractor(Callback callback) {
+  public RecurringDepositsTask(Callback callback) {
     mCallback = callback;
   }
-
-  public void onStart(); 
 
   @Override
   protected ArrayList<GoalModel> doInBackground(Void... voids) {
